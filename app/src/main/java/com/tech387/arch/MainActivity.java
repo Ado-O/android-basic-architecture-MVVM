@@ -2,13 +2,19 @@ package com.tech387.arch;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     private Toolbar mToolbar;
-    private ListView mListView;
+    private RecyclerView mRecyclerView;
+
+    private MainAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,10 +23,11 @@ public class MainActivity extends AppCompatActivity {
 
         //Finding views
         mToolbar = findViewById(R.id.toolbar);
-        mListView=findViewById(R.id.list);
+        mRecyclerView = findViewById(R.id.list);
 
         //Setup
         setupToolbar();
+        setupList();
     }
 
     /**
@@ -48,7 +55,14 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Setting up the listView & its adapter
      */
-    private void setupListView() {
-        //Enter you code and add this method to OnCreate
+    private void setupList() {
+        ArrayList<String> arrayList = new ArrayList<>();
+        arrayList.add("abc");
+        arrayList.add("asdf");
+        arrayList.add("asdfghj");
+
+        mAdapter = new MainAdapter(this, arrayList);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setAdapter(mAdapter);
     }
 }
