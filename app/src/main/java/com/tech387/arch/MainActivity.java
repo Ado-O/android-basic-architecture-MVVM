@@ -7,6 +7,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.widget.ListView;
 
+import com.tech387.arch.data.Movie;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -56,10 +58,11 @@ public class MainActivity extends AppCompatActivity {
      * Setting up the listView & its adapter
      */
     private void setupList() {
-        ArrayList<String> arrayList = new ArrayList<>();
-        arrayList.add("abc");
-        arrayList.add("asdf");
-        arrayList.add("asdfghj");
+        //Mocking the data
+        ArrayList<Movie> arrayList = new ArrayList<>();
+        arrayList.add(new Movie("Title 1", "Des 1", R.drawable.image_1));
+        arrayList.add(new Movie("Title 2", "Des 2", R.drawable.image_2));
+        arrayList.add(new Movie("Title 3", "Des 3", R.drawable.image_3));
 
         mAdapter = new MainAdapter(this, arrayList);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));

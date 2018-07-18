@@ -6,14 +6,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import com.tech387.arch.data.Movie;
+
 import java.util.ArrayList;
 
 public class MainAdapter extends RecyclerView.Adapter {
 
     private LayoutInflater mInflater;
-    private ArrayList<String> mList;
+    private ArrayList<Movie> mList;
 
-    MainAdapter(Context context, ArrayList<String> list) {
+    MainAdapter(Context context, ArrayList<Movie> list) {
         mInflater = LayoutInflater.from(context);
         mList = list;
     }
