@@ -1,5 +1,7 @@
 package com.tech387.arch;
 
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,8 +16,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private Toolbar mToolbar;
-    private RecyclerView mRecyclerView;
-
+    private ViewPager mViewPager;
     private MainAdapter mAdapter;
 
     @Override
@@ -25,11 +26,11 @@ public class MainActivity extends AppCompatActivity {
 
         //Finding views
         mToolbar = findViewById(R.id.toolbar);
-        mRecyclerView = findViewById(R.id.list);
+        mViewPager = findViewById(R.id.pager);
 
         //Setup
         setupToolbar();
-        setupList();
+        setupPager();
     }
 
     /**
@@ -57,15 +58,14 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Setting up the listView & its adapter
      */
-    private void setupList() {
+    private void setupPager() {
         //Mocking the data
-        ArrayList<Movie> arrayList = new ArrayList<>();
-        arrayList.add(new Movie("Title 1", "Des 1", R.drawable.image_1));
-        arrayList.add(new Movie("Title 2", "Des 2", R.drawable.image_2));
-        arrayList.add(new Movie("Title 3", "Des 3", R.drawable.image_3));
+        ArrayList<Fragment> arrayList = new ArrayList<>();
+        arrayList.add(MainOneFragment.newInstance());
+        arrayList.add(MainTwoFragment.newInstance());
 
-        mAdapter = new MainAdapter(this, arrayList);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerView.setAdapter(mAdapter);
+        mAdapter = new MainAdapter(getSupportFragmentManager(), arrayList);
+        mViewPager.setAdapter(mAdapter);
+
     }
 }

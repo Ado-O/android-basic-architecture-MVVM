@@ -1,40 +1,27 @@
 package com.tech387.arch;
 
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 
-import com.tech387.arch.data.Movie;
+import java.util.List;
 
-import java.util.ArrayList;
+public class MainAdapter extends FragmentPagerAdapter {
 
-public class MainAdapter extends RecyclerView.Adapter {
+    private final List<Fragment> mFragment;
 
-    private LayoutInflater mInflater;
-    private ArrayList<Movie> mList;
-
-    MainAdapter(Context context, ArrayList<Movie> list) {
-        mInflater = LayoutInflater.from(context);
-        mList = list;
-    }
-
-    @NonNull
-    @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        return new MainViewHolder(mInflater.inflate(R.layout.main_row, viewGroup, false));
+    public MainAdapter(FragmentManager fm, List<Fragment> fragment) {
+        super(fm);
+        mFragment = fragment;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
-        ((MainViewHolder) viewHolder).setup(mList.get(i));
+    public Fragment getItem(int i) {
+        return mFragment.get(i);
     }
 
     @Override
-    public int getItemCount() {
-        return mList.size();
+    public int getCount() {
+        return  mFragment .size();
     }
-
-
 }
