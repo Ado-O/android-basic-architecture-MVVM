@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View.OnClickListener"/>
+
+        <variable
+            name="movie"
+            type="com.tech387.arch.data.Movie"/>
+
+        <variable
+            name="listener"
+            type="com.tech387.arch.main.MainClickListener"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{(view) -> listener.onMovieClick(view,movie)}">
+
+        <ImageView
+            android:id="@+id/iv_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:loadImage="@{movie}"/>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="@{movie.title, default=Title}"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toRightOf="@id/iv_image"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_des"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="@{movie.des, default=Des}"
+            app:layout_constraintLeft_toRightOf="@id/iv_image"
+            app:layout_constraintTop_toBottomOf="@id/tv_title"/>
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

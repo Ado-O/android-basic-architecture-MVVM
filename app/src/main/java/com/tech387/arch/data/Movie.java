@@ -6,9 +6,9 @@ public class Movie {
 
     private String mDes;
 
-    private int mImage;
+    private String mImage;
 
-    public Movie(String title, String des, int image) {
+    public Movie(String title, String des, String image) {
         mTitle = title;
         mDes = des;
         mImage = image;
@@ -30,11 +30,11 @@ public class Movie {
         mDes = des;
     }
 
-    public int getImage() {
+    public String getImage() {
         return mImage;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         mImage = image;
     }
 }
